@@ -3,7 +3,7 @@
 
 ## 규칙.
 1. 하루 1문제 해결을 원칙으로 한다(공휴일제외)
-    - 아래 [링크](https://leetcode.com/problem-list/top-google-questions/)의 문제 중 easy제외 순차적으로 풀이 
+    - [링크](https://leetcode.com/problem-list/top-google-questions/)의 문제 중 easy제외 순차적으로 풀이 
 2. 코드는 [깃헙](https://github.com/leon1114/scsa_lc_study/projects/1)으로 관리
 3. 풀이에 실패하더라도 시도한 흔적+생각한 로직 공유시 1체크. 3체크시 1회 미참으로 간주
 4. 1회 미참시 만원 벌금
