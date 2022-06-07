@@ -20,9 +20,7 @@ public:
 			current_node->val += (l1 == nullptr) ? 0 : l1->val;
 			current_node->val += (l2 == nullptr) ? 0 : l2->val;
 			up_num = current_node->val / 10;
-	
-};
-		current_node->val %= 10;
+			current_node->val %= 10;
 			l1 = l1 == nullptr? nullptr : l1->next;
 			l2 = l2 == nullptr? nullptr : l2->next;
 		} while (l1 != nullptr || l2 != nullptr);
@@ -33,3 +31,4 @@ public:
 		}
 		return ret_node;
 	}
+};
