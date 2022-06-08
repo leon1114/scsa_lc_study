@@ -7,6 +7,9 @@ class Solution:
         """
         nums1, nums2 를 한 번씩만 순회하면서 정렬된 상태의 병합 리스트를 생성하고, 병합 리스트에서 중위값을 계산 
         O(n+m) solution
+
+        Runtime: 185 ms, faster than 13.60% of Python3 online submissions for Median of Two Sorted Arrays.
+        Memory Usage: 14.1 MB, less than 67.40% of Python3 online submissions for Median of Two Sorted Arrays.
         """
 
         nums1_idx = 0
