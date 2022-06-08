@@ -1,3 +1,7 @@
+# 파이썬 배우는데 의의를 둔다. ㅅㅂ ㅈㄴ 힘드네
+# Runtime: 862 ms, faster than 8.98% of Python3 online submissions for Longest Substring Without Repeating Characters.
+# Memory Usage: 14 MB, less than 49.30% of Python3 online submissions for Longest Substring Without Repeating Characters.
+
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
         maxCount = 0
