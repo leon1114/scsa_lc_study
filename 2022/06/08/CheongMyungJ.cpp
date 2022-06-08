@@ -4,8 +4,10 @@
 using namespace std;
 
 
-// 한번 string.length()만큼 훑으면서 동일한 char가 나오면(check_arr[s[i]] != -1) 이전에 해당 char가 나왔던 위치 이전까지의 기록을 삭제하고 (27~30line)
+// 한번 string.length()만큼 훑으면서 동일한 char가 나오면(check_arr[s[i]] != -1) 이전에 해당 char가 나왔던 위치 이전까지의 기록을 삭제하고 (29~32line)
 // 계속 진행. n*2만큼의 수행시간( O(n) )
+// Runtime: 3 ms, faster than 98.60% of C++ online submissions for Longest Substring Without Repeating Characters.
+// Memory Usage: 6.8 MB, less than 96.65% of C++ online submissions for Longest Substring Without Repeating Characters.
 
 class Solution {
 public:
