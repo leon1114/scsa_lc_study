@@ -54,5 +54,5 @@ public:
         //3.
         if(maxcount<count) maxcount = count;
         return maxcount;
-    }
+    };
 };
