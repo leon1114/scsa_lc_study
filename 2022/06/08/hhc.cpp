@@ -10,8 +10,8 @@ Write your code in this editor and press "Run" button to compile and execute it.
 
 using namespace std;
 
-//Runtime: 7 ms, faster than 91.84% of C++ online submissions for Longest Substring Without Repeating Characters.
-//Memory Usage: 6.9 MB, less than 91.23% of C++ online submissions for Longest Substring Without Repeating Characters.
+//Runtime: 3 ms, faster than 98.60% of C++ online submissions for Longest Substring Without Repeating Characters.
+//Memory Usage: 6.8 MB, less than 96.65% of C++ online submissions for Longest Substring Without Repeating Characters.
 
 class Solution {
 public:
@@ -20,7 +20,8 @@ public:
         int mem [200] = {};
         for (int i=0;i<200;i++)mem[i]=-1;
         int sub_start = -1;
-        for(int i = 0; i < s.length(); i++) {
+        int s_len = s.length();
+        for(int i = 0; i < s_len; i++) {
             // s[i]는 charhacter 하나
             //cout<<s[i]<<" last_loc"<<mem[(int)s[i]]<<" loc_len"<<i - sub_start<<" len"<<len<<"\n";
             //(int)s[i]는 character의 ascii number(int)
