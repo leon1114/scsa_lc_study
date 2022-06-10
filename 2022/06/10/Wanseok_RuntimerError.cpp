@@ -40,7 +40,7 @@ public:
             {
                 maxcount = count[i];
                 maxi = i;
-                maxtype =1;
+                maxtype =1;;
             }
             
             j=0;
