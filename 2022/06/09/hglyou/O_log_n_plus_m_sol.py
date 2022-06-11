@@ -6,7 +6,7 @@ import math
 class Solution:
     def findMedianSortedArrays(self, nums1: List[int], nums2: List[int]) -> float:
         """
-        중위값을 찾는 문제이므로, 두 list 를 완벽 하게 정렬된 상태로 병할 할 필요가 없음.
+        중위값을 찾는 문제이므로, 두 list 를 완벽하게 정렬된 상태로 병합 할 필요가 없음.
 
         중위값의 왼쪽, 오른쪽에 각각 해당 값보다 작은 값들, 큰 값들이 잘 파티셔닝되어 모여 있기만 하면 됨.
         즉, 왼쪽, 오른쪽 파티션 내부에서는 값들이 정렬되어 있을 필요가 없다.
