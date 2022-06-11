@@ -38,8 +38,6 @@ class Solution:
                 self.is_palindrome[(start, end)] = False
                 return False
 
-
-
     def longestPalindrome(self, s: str) -> str:
         max_len = 0
         max_str = ""
