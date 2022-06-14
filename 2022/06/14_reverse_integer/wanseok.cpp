@@ -1,4 +1,18 @@
-
+/*
+Runtime: 0 ms, faster than 100.00% of C++ online submissions for Reverse Integer.
+Memory Usage: 6 MB, less than 32.42% of C++ online submissions for Reverse Integer.
+Next challenges:
+String to Integer (atoi)
+Reverse Bits
+A Number After a Double Reversal
+Show off your acceptance:
+Time Submitted
+Status
+Runtime
+Memory
+Language
+06/14/2022 13:51	Accepted	0 ms	6 MB	cpp
+*/
 int my_to_int(string s, int minus)
 {
     long long ans = 0;
