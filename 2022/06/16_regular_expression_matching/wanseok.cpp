@@ -1,18 +1,17 @@
-// 같은 tc에 대해 vs 직접 돌리거나 runcode하면 통과하는데 submit 하면 탈락함 
-
-#include <iostream>
-
-using namespace std;
-
+/*
+죶긑다 준짜....
+김용수 무친놈
+Runtime: 1358 ms, faster than 5.05% of C++ online submissions for Regular Expression Matching.
+Memory Usage: 6.3 MB, less than 93.12% of C++ online submissions for Regular Expression Matching.
+Next challenges:
 int flag = 0;
-
+*/
 bool dfs(const char* s, const char* p)
 {
    
     if (flag)
     {
         return true;
-
     }
     if (*s == '\0' && *p == '\0')
     {
@@ -21,7 +20,19 @@ bool dfs(const char* s, const char* p)
     }
     else if (*s == '\0' && *p != '\0')
     {
-        return false;
+        if ((*p >= 'A') && (*p <= 'Z'))
+        {
+            ;
+        }
+        else if ((*p == '^'))
+        {
+            ;
+        }
+
+        else
+        {
+            return false;
+        }
     }
     else if (*s != '\0' && *p == '\0')
     {
@@ -53,22 +64,36 @@ bool dfs(const char* s, const char* p)
             dfs(s, p+1); //소거. (p+1에선 같길 바라며)
         }
     }
+    
     else if ((*p == '*')) // 사실은 앞에 .이 있는 .* 이고, s의 문자에 대해서 연속된거라면 골라서 없애거나 다 살리거나 가능.
     {
+
+        dfs(s, p + 1);// 얘 지우지 말고 넘어감.
         dfs(s + 1, p);// 얘 일단 소거.
         dfs(s + 1, p + 1);// 얘만 소거.
-        dfs(s, p + 1);// 얘 지우지 말고 넘어감.
 
     }
     else if ((*p == '.')) // 하나 없앤다.
     {
         dfs(s + 1, p + 1);
     }
+    else if ((*p == '^')) // *s 가 뭐든 없앨 수 있다.. 안 없앨수도 있고..
+    {
+
+        dfs(s, p + 1);// 얘 지우지 말고 넘어감.
+        if ((*s != '\0')&& (*p != '\0'))  dfs(s + 1, p + 1);// 얘만 소거.
+
+        if ((*s != '\0') && (*p != '\0')) dfs(s + 1, p);// 얘 일단 소거.
+
+    }
+
     if (flag)
     {
         return true;
 
     }
+
+
     return false;
 
 }
@@ -83,7 +108,7 @@ public:
         char* dtr = dtrr;
         char* dtr_original = dtrr;
 
-
+        flag = 0;
 
 
         //alphabet * 조합을 ALPHABET 으로 변경하여 가독성 강화
@@ -93,6 +118,12 @@ public:
             {
 
                 *dtr = *(ptr) - 32;
+                dtr++;
+                ptr = ptr + 2;
+            }
+            else if ((*ptr == '.') && (*(ptr + 1) == '*'))
+            {
+                *dtr = '^';
                 dtr++;
                 ptr = ptr + 2;
             }
@@ -112,23 +143,3 @@ public:
 };
 
 
-
-int main()
-{
-    
-
-
-    Solution Sol;
-
-
-
-//    bool ans = Sol.isMatch("mississippi", "mis*is*p*.");
-
-    bool ans = Sol.isMatch("aaa", "a*b*.c*a*");
-
- //  bool ans = Sol.isMatch("aa", "a*");
-
-
-   
-   return (int)ans;
-}
