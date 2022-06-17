@@ -37,6 +37,10 @@ class Solution:
         two pointer? 
 
         l, r 을 유지하면서 값이 더 작은쪽을 가운데 방향으로 움직인다.
+        >> 더 긴쪽 움직여봤자 나아질 가능성이 없음. max_area 는 둘 중 더 작은 값에 bound 되어 있음.
+        >> 그러므로 둘 중 더 짧은쪽을 반대편 방향으로 이동시키면서 더 나은 결과가 나오는지 찾아보면 됨.
+        >> brute force 와 다른 점 : 고려할 필요가 없는 경우의 수들은 아예 시도 조차 하지 않는 것.
+
         Runtime: 773 ms, faster than 90.56% of Python3 online submissions for Container With Most Water.
         Memory Usage: 27.5 MB, less than 54.27% of Python3 online submissions for Container With Most Water.
         """
