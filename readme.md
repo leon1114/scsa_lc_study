@@ -20,5 +20,5 @@
 | 기간 | 문제 리스트 이름 | 링크 |
 |------|------------------|------|
 |20220607~20220617|기본 문제 리스트|https://leetcode.com/problemset/all/|
-|20220620|Top Interview Questions|https://leetcode.com/problem-list/top-interview-questions/|
+|20220620~|Top Interview Questions|https://leetcode.com/problem-list/top-interview-questions/|
 |      |                  |      |
