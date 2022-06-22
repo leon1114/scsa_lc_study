@@ -6,6 +6,9 @@
  * };
  */
 
+// Runtime: 2 ms, faster than 72.13% of C online submissions for Remove Nth Node From End of List.
+// Memory Usage: 6 MB, less than 31.77% of C online submissions for Remove Nth Node From End of List.
+
 #define Node struct ListNode
 
 struct ListNode* removeNthFromEnd(struct ListNode* head, int n){
