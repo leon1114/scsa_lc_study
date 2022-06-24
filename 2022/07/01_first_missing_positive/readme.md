@@ -1,0 +1,2 @@
+- **그냥 순서대로 풀면 0627 주에 하드가 하나도 없고, 다음주에 하드가 3개 연속으로 나오게 되어 0701 문제와 0704 문제 순서를 바꿈.**
+- https://leetcode.com/problems/first-missing-positive/
