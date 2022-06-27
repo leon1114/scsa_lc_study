@@ -59,7 +59,7 @@ int divide(int dividend, int divisor){
 int main(void) {
     printf("%d\n", divide(10, 3)); // 2
     printf("%d\n", divide(100, 3)); // 33
-    printf("%d\n", divide(268, -3)); // -89
+    printf("%d\n", divide(100, -3)); // -33
     printf("%d\n", divide(2147483647, 2)); // 1073741823
     return 0;
 }

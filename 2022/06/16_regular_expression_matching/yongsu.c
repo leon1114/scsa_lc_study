@@ -31,13 +31,13 @@ bool isMatch(char * s, char * p) {
     return dfs(s, p);
 }
 
-// int main(void) {
-//     printf("%d\n", isMatch("aa", "a"));  //0
-//     printf("%d\n", isMatch("aa", "a*")); //1
-//     printf("%d\n", isMatch("aaaaaa", "a*")); //1
-//     printf("%d\n", isMatch("aaa", "a*a")); //1
-//     printf("%d\n", isMatch("aaaaaa", ".*")); //1
-//     printf("%d\n", isMatch("ab", ".*")); //1
-//     printf("%d\n", isMatch("aab", "c*a*b")); //1
-//     return 0;
-// }
+int main(void) {
+    printf("%d\n", isMatch("aa", "a"));  //0
+    printf("%d\n", isMatch("aa", "a*")); //1
+    printf("%d\n", isMatch("aaaaaa", "a*")); //1
+    printf("%d\n", isMatch("aaa", "a*a")); //1
+    printf("%d\n", isMatch("aaaaaa", ".*")); //1
+    printf("%d\n", isMatch("ab", ".*")); //1
+    printf("%d\n", isMatch("aab", "c*a*b")); //1
+    return 0;
+}
