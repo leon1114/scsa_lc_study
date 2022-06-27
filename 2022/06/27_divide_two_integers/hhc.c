@@ -15,11 +15,10 @@ int dfs(int * u_dend, int u_dsor, int ret) {
     return ret_dfs;
 }
 
-int ret;
 int divide(int dividend, int divisor){
-    int u_dend, u_dsor, u_dsor_o;
+    int u_dend, u_dsor;
     int sign = 1;
-    ret = 0;
+    int ret = 0;
     
     // get return sign
     if (dividend >= 0) {
@@ -31,10 +30,10 @@ int divide(int dividend, int divisor){
     }
     
     if (divisor >= 0) {
-        u_dsor_o = u_dsor = -divisor;
+        u_dsor = -divisor;
         sign = sign;
     } else {
-        u_dsor_o = u_dsor = divisor;
+        u_dsor = divisor;
         sign = sign ^ 1;
     }
     
