@@ -1,3 +1,7 @@
+// 같은 코드 다시 돌렸는데
+// Runtime: 2 ms, faster than 80.17% of C online submissions for Search in Rotated Sorted Array.
+// Memory Usage: 6 MB, less than 74.14% of C online submissions for Search in Rotated Sorted Array.
+
 // 호에에에에에에엥?? 이왜진...??
 // Runtime: 13 ms, faster than 6.28% of C online submissions for Search in Rotated Sorted Array.
 // Memory Usage: 6 MB, less than 48.03% of C online submissions for Search in Rotated Sorted Array.
