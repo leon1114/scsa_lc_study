@@ -1,3 +1,4 @@
+// 이진탐색으로 타겟 찾고 이진탐색 두번 더돌림
 // Runtime: 6 ms, faster than 96.07% of C online submissions for Find First and Last Position of Element in Sorted Array.
 // Memory Usage: 7.4 MB, less than 81.15% of C online submissions for Find First and Last Position of Element in Sorted Array.
 int binarySearch(int* nums, int left, int right, int target) {
