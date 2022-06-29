@@ -1,6 +1,8 @@
 /*
 Runtime: 19 ms, faster than 16.56% of C online submissions for Find First and Last Position of Element in Sorted Array.
 Memory Usage: 7.4 MB, less than 81.15% of C online submissions for Find First and Last Position of Element in Sorted Array.
+
+이진 탐색 두번 돌림
 */
 
 
