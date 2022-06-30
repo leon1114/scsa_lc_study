@@ -3,31 +3,26 @@ import unittest
 
 
 class Solution:
+    """
+    Runtime: 94 ms, faster than 97.02% of Python3 online submissions for Valid Sudoku.
+    Memory Usage: 13.9 MB, less than 34.46% of Python3 online submissions for Valid Sudoku.
+    """
     def isValidSudoku(self, board: List[List[str]]) -> bool:
-        rows = []
-        cols = []
-        squares = []
+        rows = [set() for _ in range(9)]
+        cols = [set() for _ in range(9)]
+        squares = [set() for _ in range(9)]
         for i in range(9):
-            if len(rows) <= i:
-                rows.append(set())
-            
             for j in range(9):
-                if len(cols) <= j:
-                    cols.append(set())
-                
-                square_num = j // 3 + (i // 3) * 3
-                if len(squares) <= square_num:
-                    squares.append(set())
-                    
                 num = board[i][j]
-                
+                if num == '.':
+                    continue
+                square_num = j // 3 + (i // 3) * 3                 
                 if num in rows[i] or num in cols[j] or num in squares[square_num]:
                     return False
                 else:
-                    if num != '.':
-                        rows[i].add(num)
-                        cols[j].add(num)
-                        squares[square_num].add(num)
+                    rows[i].add(num)
+                    cols[j].add(num)
+                    squares[square_num].add(num)
         return True
                     
                 
