@@ -1,5 +1,9 @@
 #include <stdio.h>
 
+
+// Runtime: 19 ms, faster than 16.56% of C online submissions for Find First and Last Position of Element in Sorted Array.
+// Memory Usage: 7.7 MB, less than 12.30% of C online submissions for Find First and Last Position of Element in Sorted Array.
+
 /**
  * Note: The returned array must be malloced, assume caller calls free().
  */
@@ -33,8 +37,8 @@ int* searchRange(int* nums, int numsSize, int target, int* returnSize){
     
     if (pivot != -1) {
         first_idx = last_idx = pivot;
-        while (nums[first_idx] == target) first_idx--;
-        while (nums[last_idx] == target) last_idx++;
+        while (first_idx >= 0 && nums[first_idx] == target) first_idx--;
+        while (last_idx <= numsSize - 1 && nums[last_idx] == target) last_idx++;
         ans[0] = first_idx + 1;
         ans[1] = last_idx - 1;
     }
