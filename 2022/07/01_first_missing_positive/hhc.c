@@ -8,7 +8,7 @@ int firstMissingPositive(int* nums, int numsSize){
     for(int i = 0; i < numsSize; i++) {
         if (nums[i] == ret) {
             while(map[++ret]);
-        } else if (nums[i] <= 50000 && nums[i] > 0) {
+        } else if (nums[i] <= 500000 && nums[i] > 0) {
             map[nums[i]] = 1;
         }
     }
