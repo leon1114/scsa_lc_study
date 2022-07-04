@@ -2,12 +2,15 @@
 // Runtime: 9 ms, faster than 92.11% of C online submissions for Permutations.
 // Memory Usage: 7.3 MB, less than 40.79% of C online submissions for Permutations.
 
+// dfs 내부의 멀록 제거했는데 성능차이는 크게 없음 - 오히려 느려짐?
+// Runtime: 14 ms, faster than 68.90% of C online submissions for Permutations.
+// Memory Usage: 7.3 MB, less than 35.41% of C online submissions for Permutations.
+
 /**
  * Return an array of arrays of size *returnSize.
  * The sizes of the arrays are returned as *returnColumnSizes array.
  * Note: Both returned array and *columnSizes array must be malloced, assume caller calls free().
  */
-
 
 int factorial(int n) {
     int ret = 1;
@@ -16,13 +19,16 @@ int factorial(int n) {
 }
 
 void dfs(int *** ret_arr, int* curr_cnt, int* nums, int numsSize, int* add_nums, int addSize) {
-    // numsSize == 0 이면 ret_arr에 해당 add_nums를 쳐넣는다
+    // numsSize == 0 이면 ret_arr에 해당 add_nums를 멀록해서 쳐넣는다
     if (numsSize == 0) {
-        (*ret_arr)[(*curr_cnt)++] = add_nums;
+        int * tmp = (int*)malloc(sizeof(int) * (addSize));
+        for(int i = 0; i < addSize; i++) tmp[i] = add_nums[i];
+        (*ret_arr)[(*curr_cnt)++] = tmp;
         return;
     }
     
-    int *added, *num_wo_one = (int*)malloc(sizeof(int) * (numsSize - 1));
+    int added[6];
+    int num_wo_one[6];
     for(int j = 0; j < numsSize; j++) {
         // nums에서 숫자 한개 뺀 array를 만들어서 다음 dfs에 넘김
         int cnt = 0;
@@ -31,7 +37,6 @@ void dfs(int *** ret_arr, int* curr_cnt, int* nums, int numsSize, int* add_nums,
         }  
         
         // nums의 숫자 하나씩 add_nums에 넣어가면서 dfs
-        added = (int*)malloc(sizeof(int) * (addSize + 1));
         for(int i = 0; i < addSize; i++) {
             added[i] = add_nums[i];
         }
