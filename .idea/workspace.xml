@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cbd88e7d-3d4f-43ee-afd9-644672abf88b" name="변경" comment="">
-      <change beforePath="$PROJECT_DIR$/2022/06/17_container_with_most_water/hglyou.py" beforeDir="false" afterPath="$PROJECT_DIR$/2022/06/17_container_with_most_water/hglyou.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -124,7 +124,7 @@
       <option name="presentableId" value="Default" />
       <updated>1654926676737</updated>
       <workItem from="1654926689340" duration="9681000" />
-      <workItem from="1655450534537" duration="961000" />
+      <workItem from="1655450534537" duration="1039000" />
     </task>
     <servers />
   </component>
