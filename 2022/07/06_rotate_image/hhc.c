@@ -3,11 +3,23 @@
 
 void rotate(int** matrix, int matrixSize, int* matrixColSize){
     int rot_val, col, row, tmp, next_val;
+    
+    // 이중포문으로 돌리기 시작점 정하기
+    // 각각 4번씩 돌릴 거라 두번 돌리지 않도록 유니크한 돌림지점을 찾아야함. 아래 예시의 R 위치를 설정
+    // 5x5
+    // R R R O O
+    // R R R O O
+    // O O O O O
+    // O O O O O
+    // O O O O O
     for (int col_rot = 0; col_rot < (matrixSize + 1) / 2; col_rot++) {
-        for (int row_rot = 0; row_rot < matrixSize / 2; row_rot++) { // 돌리기 시작점 정하기
+        for (int row_rot = 0; row_rot < matrixSize / 2; row_rot++) {
             col = col_rot; row = row_rot;
             rot_val = matrix[row][col];
-            for(int i = 0; i < 4; i++) { // 4번 돌려돌려
+            
+            // 4번 돌려돌려
+            // 청명 풀이처럼 loop 없이 걍 4번 하는게 좀 더 빠를 듯?
+            for(int i = 0; i < 4; i++) {
                 tmp = col;  col = matrixSize - 1 - row; row = tmp;
                 next_val = matrix[row][col];
                 matrix[row][col] = rot_val;
@@ -26,10 +38,3 @@ void rotate(int** matrix, int matrixSize, int* matrixColSize){
 // 01 13 32 20 01
 // 02 32 13 10 02
 // 11 12 22 21 11
-
-// 5x5
-// R R R O O
-// R R R O O
-// O O O O O
-// O O O O O
-// O O O O O
