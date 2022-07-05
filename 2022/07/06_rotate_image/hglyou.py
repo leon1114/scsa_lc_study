@@ -6,6 +6,8 @@ class Solution:
     def rotate_allocate_new_list(self, matrix: List[List[int]]) -> None:
         """
         Do not return anything, modify matrix in-place instead.
+
+        제출전 제약조건 없이 푼 것
         """
 
         rows = len(matrix)
@@ -27,6 +29,9 @@ class Solution:
     def rotate(self, matrix: List[List[int]]) -> None:
         """
         Do not return anything, modify matrix in-place instead.
+
+        Runtime: 53 ms, faster than 51.06% of Python3 online submissions for Rotate Image.
+        Memory Usage: 13.9 MB, less than 74.60% of Python3 online submissions for Rotate Image.
         """
 
         rows = len(matrix)
@@ -34,8 +39,7 @@ class Solution:
 
         iter_rows = ceil(rows/2)
         for i in range(iter_rows):
-            iter_cols = cols - i * 2
-            for j in range(i, i + iter_cols - 1):
+            for j in range(i, cols - i - 1):
                 cur_i = i
                 cur_j = j
 
