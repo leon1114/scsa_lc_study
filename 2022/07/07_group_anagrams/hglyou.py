@@ -13,7 +13,9 @@ class Solution:
             # string을 이용해 anagram 만들기 
             ## sorted(_str) 해서 string 의 character 들을 사전순서대로 정렬함 (bac, cba) -> abc 
             ## 정렬된 상태의 string 을 그대로 anagrams_n_str_list_map 의 hash key 로 이용함 
-            anagram = sorted(_str)
+            ## 단, string 을 sort 하면 list 타입이 되어버림. "atb" -> ['a', 'b', 't'] 
+            ## Python 에서 list 타입은 mutable 타입으로, hashing 이 불가능함. immutable sequence 타입인 tuple 로 형변환하여 hash key로 사용 
+            anagram = tuple(sorted(_str))
 
             # 만약 anagrams_n_str_list_map 에 위에서 구한 hash key 에 해당하는 list (동적 배열) 가 만들어있지 않다면 생성
             if anagram not in anagrams_n_str_list_map:
