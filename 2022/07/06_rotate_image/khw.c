@@ -1,25 +1,75 @@
 
 /*
-Runtime: 4 ms, faster than 71.01% of C online submissions for Rotate Image.
-Memory Usage: 6.2 MB, less than 94.67% of C online submissions for Rotate Image.
+
+Runtime: 7 ms, faster than 38.26% of C online submissions for Rotate Image.
+Memory Usage: 6.5 MB, less than 27.42% of C online submissions for Rotate Image.
+
+기존 로직에서 2D 배열 안넣고 풀수 있게 수정함
+이렇게 하는건 됨??
+
 */
+
 
 void rotate(int** matrix, int matrixSize, int* matrixColSize){
 
-    int temp[matrixSize][matrixSize];
-
-    for (int i =0; i<matrixSize; i++)
+    if(matrixSize%2==1)
     {
-        for (int j = 0; j < matrixSize; j++)
+        for (int i =0; i<(matrixSize/2)+1; i++)
         {
-            temp[j][ (matrixSize-1) -i] = matrix[i][j];
+            for (int j = 0; j < (matrixSize/2); j++)
+            {
+                int temp_i, temp_j, tmp;
+                int temp[4];
+                temp_i = i;
+                temp_j = j;
+
+                for(int k = 0; k < 4 ; k++)
+                {
+                    temp[k] = matrix[temp_i][temp_j];
+                    tmp = temp_i;
+                    temp_i = temp_j;
+                    temp_j = (matrixSize-1) - tmp;
+                }
+                temp_i = j;
+                temp_j = (matrixSize-1) - i;
+                for(int k = 0; k < 4 ; k++)
+                {
+                    matrix[temp_i][temp_j]=temp[k];
+                    tmp = temp_i;
+                    temp_i = temp_j;
+                    temp_j = (matrixSize-1) - tmp;
+                }
+            }
         }
     }
-    for (int i = 0; i < matrixSize; i++)
-    {
-        for (int j = 0; j < matrixSize; j++)
+    else {
+        for (int i =0; i<matrixSize/2; i++)
         {
-            matrix[i][j] = temp[i][j];
+            for (int j = 0; j < matrixSize/2; j++)
+            {
+                int temp_i, temp_j, tmp;
+                int temp[4];
+                temp_i = i;
+                temp_j = j;
+
+                for(int k = 0; k < 4 ; k++)
+                {
+                    temp[k] = matrix[temp_i][temp_j];
+                    tmp = temp_i;
+                    temp_i = temp_j;
+                    temp_j = (matrixSize-1) - tmp;
+                }
+                temp_i = j;
+                temp_j = (matrixSize-1) - i;
+                for(int k = 0; k < 4 ; k++)
+                {
+                    matrix[temp_i][temp_j]=temp[k];
+                    tmp = temp_i;
+                    temp_i = temp_j;
+                    temp_j = (matrixSize-1) - tmp;
+                }
+            }
         }
     }
 }
+
