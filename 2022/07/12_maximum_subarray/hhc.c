@@ -41,3 +41,4 @@ int maxSubArray(int* nums, int numsSize){
         prev_sign = this_sign;
     }
     return max_sum;
+}
