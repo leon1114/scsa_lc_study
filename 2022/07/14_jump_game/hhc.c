@@ -3,11 +3,9 @@
 
 bool canJump(int* nums, int numsSize){
     int idx = 0;
-    int prv_idx;
-    
     while (true) {
-        if (idx >= numsSize - 1) return true;
-        if (nums[idx] == 0) {
+        if (idx >= numsSize - 1) return true; // idx가 배열 끝 지나갔으면 true~
+        if (nums[idx] == 0) { // 0을 만나면 거기서부터 앞으로 찾아가면서 현위치 짬프해서 지나가지나 확인~
             int i;
             for(i = idx - 1; i >= 0; i--) {
                 if (i + nums[i] > idx) {
@@ -18,7 +16,7 @@ bool canJump(int* nums, int numsSize){
             if (idx >= numsSize - 1) return true;
             if (i < 0) return false;
         }
-        prv_idx = idx;
+        // 일단 짬프
         idx += nums[idx];
     }
     return false;
