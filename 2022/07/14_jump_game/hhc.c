@@ -16,7 +16,7 @@ bool canJump(int* nums, int numsSize){
             if (idx >= numsSize - 1) return true;
             if (i < 0) return false;
         }
-        // 일단 짬프
+        // 일단 최대 사정거리로 짬프
         idx += nums[idx];
     }
     return false;
