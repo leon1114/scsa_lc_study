@@ -1,5 +1,6 @@
 class Solution:
     """
+    O(n)
     Runtime: 639 ms, faster than 67.29% of Python3 online submissions for Jump Game.
     Memory Usage: 15.3 MB, less than 18.22% of Python3 online submissions for Jump Game.
     
