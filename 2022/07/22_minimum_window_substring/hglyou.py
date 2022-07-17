@@ -7,20 +7,16 @@ class Solution:
         """
         Thoughts
         
-        two pointer approach? 
+        two pointer approach
+        st(art), e(n)d (both inclusive)
         
-        s, e (both inclusive)
-        초기값 start = 0, end = 1 (exclusive)
+        substring = s[st:ed]
+        substring 이 T 를 포함하지 않을 경우 ed 를 계속 늘려나감 
         
-        substring = s[start:end]
+        T 를 포함하게되면 st 를 계속 좁힘 
+        다시 T 를 포함하지 않게되면 ed 를 늘려나감 
         
-        substring 이 T 를 포함하지 않을 경우 e 를 계속 늘려나감 
-        
-        T 를 포함하게되면 s 를 계속 좁힘 
-        
-        다시 T 를 포함하지 않게되면 e 를 늘려나감 
-        
-        이러다가 e 가 마지막에 도달하면 종료 
+        이러다가 ed 가 마지막에 도달하면 종료 
         
         Runtime: 429 ms, faster than 16.91% of Python3 online submissions for Minimum Window Substring.
         Memory Usage: 14.8 MB, less than 10.33% of Python3 online submissions for Minimum Window Substring.
