@@ -42,11 +42,7 @@ class Solution:
         
         cur = rp + 1
         
-        while True:
-            
-            if rp >= cur:
-                cur = rp + 1
-            
+        while True:           
             if cur >= bp:
                 break
                 
