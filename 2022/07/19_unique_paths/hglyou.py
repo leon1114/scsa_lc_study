@@ -11,7 +11,6 @@ class Solution:
         if m == 1 or n == 1:
             return 1
     
-        
         path_cnts = [1] * n
         
         for r in range(1, m):
