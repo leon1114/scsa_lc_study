@@ -2,6 +2,7 @@
 from collections import defaultdict
 
 class Solution:
+       
     def minWindow(self, s: str, t: str) -> str:
         """
         Thoughts
@@ -21,13 +22,15 @@ class Solution:
         
         이러다가 e 가 마지막에 도달하면 종료 
         
-        일단 O(m+n) 은 follow up 이니까 ... 
-        Runtime: 677 ms, faster than 8.50% of Python3 online submissions for Minimum Window Substring.
-        Memory Usage: 14.6 MB, less than 82.83% of Python3 online submissions for Minimum Window Substring.
+        Runtime: 429 ms, faster than 16.91% of Python3 online submissions for Minimum Window Substring.
+        Memory Usage: 14.8 MB, less than 10.33% of Python3 online submissions for Minimum Window Substring.
+        
+        time complexity 는 two pointer 이고, pointer 이동할 때 마다 constant 니까 O(n) 인 것 같은데 매우느림 
+        - O(n) 이 아닌가?
+        - O(n) 인데 constant 부분이 너무 오래걸리나? 
         """
         
         # base case 
-        
         if s == t:
             return s
         
@@ -46,24 +49,32 @@ class Solution:
         
         answer = ""
         
+        # check 내부에서는 최대 loop 를 52번 도니까 엄밀히 따지면 constant time complexity 임. 
         def check():
             for k, v in t_cnt.items():
                 if sub_cnt[k] < v:
                     return False
             return True
-                
+        
+        checked = check()
         
         while ed < len(s):
-            if check():
+            if checked:
                 if len(s[st:ed+1]) < len(answer) or answer == "":
                     answer = s[st:ed+1]
-                    
+                
+                if s[st] in t_cnt and sub_cnt[s[st]] - 1 < t_cnt[s[st]]:
+                    checked = False
+                
                 sub_cnt[s[st]] -=1
                 st += 1
             else:
                 if ed + 1 < len(s):
                     ed_c = s[ed + 1]
                     sub_cnt[ed_c] += 1
+                    
+                    if sub_cnt[ed_c] >= t_cnt[ed_c] and check():
+                        checked = True
                 ed += 1
                 
         
