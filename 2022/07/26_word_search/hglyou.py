@@ -11,9 +11,6 @@ class Solution:
             if target_idx == len(word) - 1 and board[s_r][s_c] == word[target_idx]:
                 return True
             
-            if board[s_r][s_c] != word[target_idx]:
-                return False
-            
             for dy, dx in directions:
                 ny, nx = s_r + dy, s_c + dx
                 if ny < 0 or ny >= len(board) or nx < 0 or nx >= len(board[0]):
