@@ -2,8 +2,8 @@ from collections import deque, defaultdict
 
 class Solution:
     """
-    Runtime: 5603 ms, faster than 79.46% of Python3 online submissions for Word Search.
-    Memory Usage: 13.8 MB, less than 92.85% of Python3 online submissions for Word Search.
+    Runtime: 1293 ms, faster than 97.68% of Python3 online submissions for Word Search.
+    Memory Usage: 14 MB, less than 50.90% of Python3 online submissions for Word Search.
     """
     
     def exist(self, board: List[List[str]], word: str) -> bool:
