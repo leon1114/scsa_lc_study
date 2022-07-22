@@ -60,10 +60,9 @@ char * minWindow(char * s, char * t){
 
 // // Runtime: 34 ms, faster than 19.75% of C online submissions for Minimum Window Substring.
 // // Memory Usage: 6.5 MB, less than 74.07% of C online submissions for Minimum Window Substring.
-// // O(2m+n) solution
+// // O(104?m+n) solution
 
 // // TODO: sol인지 판단하는거 hash로 바꿈
-// // TODO: O(m+n)? 가능?도전?
 
 // char * minWindow(char * s, char * t){
 //     int ret_s = -1, ret_e = -1, ptr_s = 0, ptr_e = 0;
