@@ -5,13 +5,17 @@
 #         self.left = left
 #         self.right = right
 class Solution:
+    """
+    Runtime: 38 ms, faster than 83.99% of Python3 online submissions for Binary Tree Zigzag Level Order Traversal.
+Memory Usage: 14.2 MB, less than 14.81% of Python3 online submissions for Binary Tree Zigzag Level Order Traversal.
+    """
     def zigzagLevelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
         if root is None:
             return []
         
         queues = [[], []]
         turn = 0
-        queues[0].append((root, 0))
+        queues[0].append(root)
         ans = []
         
         while True:
@@ -24,17 +28,17 @@ class Solution:
                 break
                 
             while cur:
-                node, level = cur.pop()
-                if len(ans) <= level:
+                node = cur.pop()
+                if len(ans) <= turn:
                     ans.append([])
                 
-                ans[level].append(node.val)
+                ans[turn].append(node.val)
                 
                 children = [node.left, node.right] if turn % 2 == 0 else [node.right, node.left]
                 
                 for c in children:
                     if c:
-                        child.append((c, level+1))
+                        child.append(c)
             
             turn += 1
         
