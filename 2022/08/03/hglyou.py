@@ -5,6 +5,29 @@
 #         self.left = left
 #         self.right = right
 class Solution:
+        """
+Runtime: 64 ms, faster than 95.41% of Python3 online submissions for Construct Binary Tree from Preorder and Inorder Traversal.
+Memory Usage: 18.9 MB, less than 86.20% of Python3 online submissions for Construct Binary Tree from Preorder and Inorder Traversal.
+    """
+    def buildTree(self, preorder: List[int], inorder: List[int]) -> Optional[TreeNode]:
+        inorder_index_map = {v:i for i,v in enumerate(inorder)}
+        def buildSubTree(pre_start, in_start, _len):
+            if _len == 0:
+                return None
+        
+            root_val = preorder[pre_start]
+            root = TreeNode(root_val)
+            inorder_root_index = inorder_index_map[root_val]
+            
+            root.left = buildSubTree(pre_start+1, in_start, inorder_root_index - in_start)
+            root.right = buildSubTree(pre_start+1+inorder_root_index - in_start,
+                                      inorder_root_index+1,
+                                      _len - (inorder_root_index - in_start) - 1)
+
+            return root
+        
+        return buildSubTree(0, 0, len(preorder))
+
     """
     Runtime: 1166 ms, faster than 5.01% of Python3 online submissions for Construct Binary Tree from Preorder and Inorder Traversal.
     Memory Usage: 55.4 MB, less than 43.65% of Python3 online submissions for Construct Binary Tree from Preorder and Inorder Traversal.
@@ -18,7 +41,7 @@ class Solution:
        
     위와 같이 트리 구성됨. 왼쪽 오른쪽 subtree 가 inorder, preorder 형태로 정의되면 다시 동일한 방식으로 구체화시킴 -> 재귀로 문제해결 
     """
-    def buildTree(self, preorder: List[int], inorder: List[int]) -> Optional[TreeNode]:
+    def buildTreePrev(self, preorder: List[int], inorder: List[int]) -> Optional[TreeNode]:
         preorder_index_map = {v: i for i,v in enumerate(preorder)}
         inorder_index_map = {v: i for i,v in enumerate(inorder)}
         
