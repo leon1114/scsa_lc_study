@@ -10,12 +10,9 @@ class Solution:
         """
         
         ans = list()
-        def bt(_s, temp_arr=None):
-            if temp_arr is None:
-                temp_arr = list()
-                
+        def bt(_s, temp_arr):
             if _s == "":
-                ans.append(list(temp_arr))
+                ans.append(temp_arr[:])
                 return
             
             for j in range(1, len(_s)+1):
@@ -25,7 +22,7 @@ class Solution:
                     bt(_s[j:], temp_arr)
                     temp_arr.pop()
 
-        bt(s, None)
+        bt(s, [])
         
         return ans
                 
