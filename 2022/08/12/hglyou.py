@@ -1,5 +1,8 @@
 from collections import deque, defaultdict
-
+"""
+Runtime: 687 ms, faster than 31.20% of Python3 online submissions for Word Ladder.
+Memory Usage: 23.2 MB, less than 5.06% of Python3 online submissions for Word Ladder.
+"""
 class Solution:
     def ladderLength(self, beginWord: str, endWord: str, wordList: List[str]) -> int:
         if endWord not in wordList:
