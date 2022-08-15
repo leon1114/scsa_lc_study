@@ -1,38 +1,37 @@
 """
 Runtime: 715 ms, faster than 88.95% of Python3 online submissions for Gas Station.
-Memory Usage: 19.4 MB, less than 25.37% of Python3 online submissions for Gas Station.
+Memory Usage: 19 MB, less than 78.64% of Python3 online submissions for Gas Station.
 """
 
 class Solution:
     def canCompleteCircuit(self, gas: List[int], cost: List[int]) -> int:
         """
-        index 0 부터 시작해서 spare gas (gas - cost) 를 계속해서 더해 나간다. 
+        sum(cost) > sum(gas) 면 완주 불가능. 
+        sum(gas) >= sum(cost) 라면, 어디서 시작해야 circuit 완주 가능한지 알 수 있어야 한다. 
         
-        마지막 station 까지 도착했을 때, spare gas 의 합이 0보다 작으면 circuit 완주가 불가능.
-        만약 spare gas 합이 0 보다 크다면, 어디서 시작해야 circuit 완주 가능한지 알 수 있어야 한다. 
+        index i 부터 시작, array 끝까지 spare 를 더해나갔을 때, spare 의 합이 0 보다 큰 마지막 index i 를 찾으면 됨. 
+        위와 같이 i 를 찾으면, 
         
-        spare gas 의 합 (total gas) 가 0 보다 크다면, 어디서 시작해야 완주가능할까? 
-        
-        index 0 ~ i 까지의 total gas 가 가장 작아지는 index i 를 찾고, 그 바로 다음 index 에서 시작하면 됨.
-        첫 번째 예시 문제 기준, 
-        - index 0 ~ 2 까지의 spare gas 합은 -6 이 됨. 
-        - total gas 의 합은 0 임. 
-        - 즉, index 3 부터 마지막까지 spare gas 를 더하면 6 이됨 -> 0 ~ 2 까지의 소모량을 모두 충족할 수 있는 spare gas 를 모을 수 있음. 
-        
+        전체 spare 는 0 보다 크다는 것이 보장된 상태에서, 
+        - 0 ~ i - 1 까지의 spare 합은 0 보다 작음 
+        - i ~ 마지막 index 까지의  spare 합은 0 ~ i - 1 의 spare 적자를 충분히 매꿀 수 있는 수준이 됨. 
+        - 만약 위 조건을 만족하는 i 보다 앞에서 시작하게 된다면, 진행하는 도중 무조건 gas 부족으로 멈춰서게됨. 
         
         """
+        if sum(cost) > sum(gas):
+            return -1
         
-        min_cumulated_spare = float('inf')
-        min_cumulated_spare_idx = -1
+        start_idx = 0
+        total_spare = 0
         
-        total_gas = 0
+        for i in range(len(gas)):
+            spare_gas = gas[i] - cost[i]
+            total_spare += spare_gas
+            if total_spare < 0:
+                start_idx = i + 1
+                total_spare = 0
         
-        for i, (_gas, _cost) in enumerate(zip(gas, cost)):
-            total_gas += (_gas - _cost)
+        return start_idx
             
-            if total_gas < min_cumulated_spare:
-                min_cumulated_spare_idx = i
-                min_cumulated_spare = total_gas
-        
-        return -1 if total_gas < 0 else (min_cumulated_spare_idx + 1) % len(gas)
+            
         
