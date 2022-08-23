@@ -1,7 +1,8 @@
 """
 Runtime: 164 ms, faster than 53.12% of Python3 online submissions for Max Points on a Line.
-Memory Usage: 38.4 MB, less than 6.89% of Python3 online submissions for Max Points on a Line.
+Memory Usage: 33.1 MB, less than 19.24% of Python3 online submissions for Max Points on a Line.
 """
+from collections import defaultdict
 class Solution:
     def maxPoints(self, points: List[List[int]]) -> int:
         """
@@ -10,14 +11,16 @@ class Solution:
         line 찾기 -> 어차피 point 가 300개 밖에 안되어서 n^2 으로 구해도 iteration 90,000 번이면 수행가능 
         """
         
-        lines = {}
+        lines = defaultdict(set)
         max_points = 1
+        points = [tuple(p) for p in points]
         
         for i in range(len(points)-1):
             p_ix, p_iy = points[i]
+            
             for j in range(i+1, len(points)):
                 p_jx, p_jy = points[j]
-
+                
                 if p_ix == p_jx:
                     line = (p_ix, None, None)
                 else:
@@ -25,12 +28,8 @@ class Solution:
                     b = p_iy - w * p_ix
                     line = (None, w,b)
                 
-                if line not in lines:
-                    lines[line] = set()
-                
-                lines[line].add(tuple(points[i]))
-                lines[line].add(tuple(points[j]))
-                
+                lines[line].update([points[i], points[j]])
+    
                 max_points = max(max_points, len(lines[line]))
 
         return max_points
