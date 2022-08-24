@@ -5,12 +5,12 @@
 //리턴이 인트라 걍 해봤는데 되네 개꿀 ㅎ;
 
 class Solution {
-    unordered_set<string> operand = { "+", "-", "*", "/" };
+    unordered_set<string> operator = { "+", "-", "*", "/" };
 public:
 	int evalRPN(vector<string>& tokens) {
 		stack<int> st;
 		for (int i = 0; i < tokens.size(); i++) {
-			if (operand.count(tokens[i]) > 0) {
+			if (operator.count(tokens[i]) > 0) {
 				int right = st.top();
 				st.pop();
 				int left = st.top();
