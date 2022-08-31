@@ -1,6 +1,8 @@
 """
 Runtime: 4287 ms, faster than 12.33% of Python3 online submissions for Factorial Trailing Zeroes.
 Memory Usage: 13.9 MB, less than 21.75% of Python3 online submissions for Factorial Trailing Zeroes.
+
+일단 follow up 조건인 log 시간 복잡도는 충족 안시킴
 """
 
 class Solution:
