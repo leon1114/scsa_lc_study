@@ -1,6 +1,6 @@
 """
-Runtime: 259 ms, faster than 82.78% of Python3 online submissions for Rotate Array.
-Memory Usage: 25.4 MB, less than 29.10% of Python3 online submissions for Rotate Array.
+Runtime: 211 ms, faster than 98.58% of Python3 online submissions for Rotate Array.
+Memory Usage: 25.5 MB, less than 29.10% of Python3 online submissions for Rotate Array.
 """
 
 class Solution:
@@ -8,10 +8,11 @@ class Solution:
         """
         Do not return anything, modify nums in-place instead.
         """
-        if k == 0 or k % len(nums) == 0 or len(nums) == 1:
-            return nums
         
         k = k % len(nums)
+        
+        if k == 0 or len(nums) == 1:
+            return nums
         
         _nums = nums[:]
         nums[:k] = _nums[-k:]
