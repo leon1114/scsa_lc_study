@@ -1,29 +1,19 @@
-from collections import deque
 """
-Runtime: 346 ms, faster than 84.93% of Python3 online submissions for Number of Islands.
-Memory Usage: 16.4 MB, less than 81.30% of Python3 online submissions for Number of Islands.
+Runtime: 47 ms, faster than 58.23% of Python3 online submissions for House Robber.
+Memory Usage: 13.8 MB, less than 97.20% of Python3 online submissions for House Robber.
 """
-class Solution:
-    def numIslands(self, grid: List[List[str]]) -> int:
-        cnt = 0
-        
-        rows, cols = len(grid), len(grid[0])
-        
-        def dfs(r,c):
-            if (r < 0 or r >= rows or c < 0 or c >= cols or grid[r][c] == '0'):
-                return
-            
-            grid[r][c] = '0'
-            
-            dfs(r+1, c)
-            dfs(r-1, c)
-            dfs(r, c+1)
-            dfs(r, c-1)
-        
-        for r in range(rows):
-            for c in range(cols):  
-                if grid[r][c] == '1':
-                    cnt += 1
-                    dfs(r,c)
 
-        return cnt
+class Solution:
+    def rob(self, nums: List[int]) -> int:
+        """
+        모든 경우의 수 고려해봐야 하고, 
+        
+        이전 집 status => 이전 집을 털었을경우 gain, 안 털었을 경우 gain 이 저장되어 있어야 함. 
+        """
+        dp = [nums[0], 0] # 해당 index의 집 털기, 안털기
+        
+        for num in nums[1:]:
+            dp = [dp[1] + num, max(dp[0], dp[1])]
+        
+        return max(dp)
+        

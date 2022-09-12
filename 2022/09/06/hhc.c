@@ -1,40 +1,20 @@
-// Runtime: 34 ms, faster than 77.97% of C online submissions for Number of Islands.
-// Memory Usage: 9.2 MB, less than 45.82% of C online submissions for Number of Islands.
-int dir[4][2] = {{1,0}, {-1,0}, {0,1}, {0,-1}};
-int queue[90005][2] = {0, };
+// Runtime: 2 ms, faster than 53.38% of C online submissions for House Robber.
+// Memory Usage: 5.8 MB, less than 79.50% of C online submissions for House Robber.
 
-int numIslands(char** grid, int gridSize, int* gridColSize)
-{
-    // dfs + bfs approach
-    int res = 0;
-    int m = gridSize, n = *gridColSize;
-    for (int i = 0; i < m; i++) {
-        for (int j = 0; j < n; j++) {
-            if (grid[i][j] == '1') {
-                grid[i][j]++;
-                res++;
-                
-                // bfs block
-                int q_s = 0, q_e = 0;
-                queue[q_e][0] = i;
-                queue[q_e++][1] = j;
-                while(q_s < q_e) {
-                    int ii = queue[q_s][0], jj = queue[q_s++][1];
-                    for (int k = 0; k < 4; k++) {
-                        int ni = ii + dir[k][0];
-                        int nj = jj + dir[k][1];
-                        if (ni < 0 || ni >= m || nj < 0 || nj >= n) continue;
-                        if (grid[ni][nj] == '1') {
-                            grid[ni][nj]++;
-                            queue[q_e][0] = ni;
-                            queue[q_e++][1] = nj;
-                        }
-                    }
-                }
-                ////
-                
-            }
-        }
+int max(int x, int y){
+    return x * (x >= y) + y * (y > x);
+}
+
+int rob(int* nums, int numsSize){
+    if (numsSize == 0) {return 0;}
+    if (numsSize == 1) {return nums[0];}
+    if (numsSize == 2) {return max(nums[0], nums[1]);}
+    int *dp = malloc(numsSize * sizeof(int));
+    dp[0] = nums[0];
+    dp[1] = nums[1];
+    for (int i = 2; i < numsSize; i++) {
+        dp[i] = max(max(nums[i] + dp[i-2], dp[i-1]), 
+                    nums[i] + dp[i-1] - nums[i-1]);
     }
-    return res;
+    return dp[numsSize-1];
 }

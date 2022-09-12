@@ -1,25 +1,32 @@
-//Runtime: 133 ms, faster than 99.00% of C++ online submissions for Count Primes.
-//Memory Usage: 11.3 MB, less than 24.92% of C++ online submissions for Count Primes.
-//???의 채 적용하고 (바깥쪽 for문) 합성수는 건너뛰는 방법으로 (check[i] == 1 continue, j += i) 최대한 성능 높여봄..
+//Runtime: 40 ms, faster than 85.37% of C++ online submissions for Number of Islands.
+//Memory Usage: 12.2 MB, less than 96.71% of C++ online submissions for Number of Islands.
+//bfs로도 풀어봤는데 단순 0으로 치환하고 끝나는 문제( 찾는 문제가 아닌)는 dfs가 더 빠른듯( 약 2배)
 
 class Solution {
-    char check[5000001];
+    int dx[4] = {0, 0, -1, 1};
+    int dy[4] = {1, -1, 0, 0};
 public:
-    int countPrimes(int n) {
-        if (n < 3) return 0;
-        memset(check, 0, sizeof(char) * n);
-
-        int rt = sqrt(n);
-        for (int i = 3; i <= rt; i += 2) {
-            if (check[i] == 1) continue;
-            for (int j = i + i; j < n; j += i) {
-                check[j] = 1;
-            }
+    
+    void searchMap(vector<vector<char>>& grid, int y, int x){
+        for (int i = 0; i < 4; i++){
+            int nx = x + dx[i];
+            int ny = y + dy[i];
+            if (nx < 0 || nx >= grid[0].size() || ny < 0 || ny >= grid.size()) continue;
+            if (grid[ny][nx] == '0') continue;
+            grid[ny][nx] = '0';
+            searchMap(grid, ny, nx);
         }
-        int sol = 1;
-        for (int i = 3; i < n; i += 2) {
-            if (check[i] == 0)
-                sol++;
+    }
+    
+    int numIslands(vector<vector<char>>& grid) {
+        int sol = 0;
+        for (int i = 0; i < grid.size(); i++){
+            for (int j = 0; j < grid[0].size(); j++){
+                if (grid[i][j] == '1'){
+                    searchMap(grid, i, j);
+                    sol++;
+                }
+            }
         }
         return sol;
     }

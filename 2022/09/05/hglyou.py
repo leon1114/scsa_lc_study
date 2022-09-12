@@ -1,19 +1,37 @@
-"""
-Runtime: 47 ms, faster than 58.23% of Python3 online submissions for House Robber.
-Memory Usage: 13.8 MB, less than 97.20% of Python3 online submissions for House Robber.
-"""
-
 class Solution:
-    def rob(self, nums: List[int]) -> int:
+    def rotate_O_n_space(self, nums: List[int], k: int) -> None:
         """
-        모든 경우의 수 고려해봐야 하고, 
+        Do not return anything, modify nums in-place instead.
         
-        이전 집 status => 이전 집을 털었을경우 gain, 안 털었을 경우 gain 이 저장되어 있어야 함. 
+        Runtime: 211 ms, faster than 98.58% of Python3 online submissions for Rotate Array.
+        Memory Usage: 25.5 MB, less than 29.10% of Python3 online submissions for Rotate Array.
         """
-        dp = [nums[0], 0] # 해당 index의 집 털기, 안털기
         
-        for num in nums[1:]:
-            dp = [dp[1] + num, max(dp[0], dp[1])]
+        k = k % len(nums)
         
-        return max(dp)
+        if k == 0 or len(nums) == 1:
+            return nums
+        
+        _nums = nums[:]
+        nums[:k] = _nums[-k:]
+        nums[k:] = _nums[:-k]
+        
+    def rotate(self, nums: List[int], k: int) -> None:
+        """
+        Runtime: 633 ms, faster than 22.94% of Python3 online submissions for Rotate Array.
+        Memory Usage: 25.4 MB, less than 75.84% of Python3 online submissions for Rotate Array.
+        """
+        
+        k = k % len(nums)
+        if k == 0 or len(nums) == 1:
+            return nums
+        
+        def in_place_reverse(array: List, s, e):
+            while s < e:
+                array[s], array[e] = array[e], array[s]
+                s, e = s + 1, e - 1
+        
+        in_place_reverse(nums, 0, len(nums) - 1)
+        in_place_reverse(nums, 0, k - 1)
+        in_place_reverse(nums, k, len(nums) - 1)
         

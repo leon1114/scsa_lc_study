@@ -1,20 +1,29 @@
+from collections import deque
 """
-Runtime: 5453 ms, faster than 46.12% of Python3 online submissions for Count Primes.
-Memory Usage: 52.7 MB, less than 82.03% of Python3 online submissions for Count Primes.
+Runtime: 346 ms, faster than 84.93% of Python3 online submissions for Number of Islands.
+Memory Usage: 16.4 MB, less than 81.30% of Python3 online submissions for Number of Islands.
 """
-
 class Solution:
-    def countPrimes(self, n: int) -> int:
-        if n <= 2:
-            return 0
+    def numIslands(self, grid: List[List[str]]) -> int:
+        cnt = 0
         
-        isPrime = [True] * n
-        isPrime[0] = False
-        isPrime[1] = False
+        rows, cols = len(grid), len(grid[0])
         
-        for i in range(2, n):
-            if isPrime[i]:
-                for num in range(i * 2, n, i):
-                    isPrime[num] = False
-                    
-        return sum(isPrime)
+        def dfs(r,c):
+            if (r < 0 or r >= rows or c < 0 or c >= cols or grid[r][c] == '0'):
+                return
+            
+            grid[r][c] = '0'
+            
+            dfs(r+1, c)
+            dfs(r-1, c)
+            dfs(r, c+1)
+            dfs(r, c-1)
+        
+        for r in range(rows):
+            for c in range(cols):  
+                if grid[r][c] == '1':
+                    cnt += 1
+                    dfs(r,c)
+
+        return cnt
