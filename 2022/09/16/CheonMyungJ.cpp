@@ -2,7 +2,7 @@
 //Memory Usage: 13.2 MB, less than 50.33% of C++ online submissions for Word Search II.
 //오우 이거 trie와 dfs의 조화로 참신한 문제구만
 //문자 일단 trie에 다 등록시킨담에
-//board 모든 위치를 시작점으로 dfs로 들어가면서 trie와 비교하며 
+//board 모든 위치를 시작점으로 dfs로 들어가면서 trie와 비교하며 처리함.
 
 class Trie {
 public:
