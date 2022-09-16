@@ -1,5 +1,5 @@
-//Runtime: 671 ms, faster than 76.65% of C++ online submissions for Word Search II.
-//Memory Usage: 13.1 MB, less than 50.33% of C++ online submissions for Word Search II.
+//Runtime: 401 ms, faster than 90.28% of C++ online submissions for Word Search II.
+//Memory Usage: 13.2 MB, less than 50.33% of C++ online submissions for Word Search II.
 //오우 이거 trie와 dfs의 조화로 참신한 문제구만
 //문자 일단 trie에 다 등록시킨담에
 //board 모든 위치를 시작점으로 dfs로 들어가면서 trie와 비교하며 
@@ -11,8 +11,8 @@ public:
         Node* key[26];
         bool check;
         int count;
-        string st;
-        Node() : check(false), count(0), st() { memset(key, 0, sizeof(Node*) * 26); }
+        string* st;
+        Node() : check(false), count(0), st(nullptr) { memset(key, 0, sizeof(Node*) * 26); }
     };
     Node* head;
 
@@ -20,7 +20,7 @@ public:
         head = new Node();
     }
 
-    void insert(string word) {
+    void insert(string& word) {
         Node* temp = head;
         for (int i = 0; i < word.length(); i++) {
             if (temp->key[word[i] - 'a'] == nullptr) {
@@ -29,7 +29,7 @@ public:
             temp = temp->key[word[i] - 'a'];
             temp->count++;
         }
-        temp->st = word;
+        temp->st = &word;
         temp->check = true;
     }
 
@@ -61,7 +61,7 @@ public:
         Trie::Node* next = node->key[board[y][x] - 'a'];
 
         int sum = 0;
-		    check[y][x] = 1;
+		check[y][x] = 1;
         if (x != board[0].size() - 1) {
             sum += dfs(board, next, x + 1, y);
         }
@@ -79,7 +79,7 @@ public:
         if (next->check == true && next->count > 0) {
             next->check = false;
             next->count--;
-            ret_string.push_back(next->st);
+            ret_string.push_back(*next->st);
             sum++;
         }
         
