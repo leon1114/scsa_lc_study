@@ -10,7 +10,6 @@ class Solution:
         
         for num in nums:
             nums_count[num + 10000] += 1
-        print(nums_count[10001:10007])
         
         for idx in reversed(range(len(nums_count))):
             count = nums_count[idx]
@@ -18,3 +17,5 @@ class Solution:
             k -= count
             if k <= 0:
                 return num
+
+        
