@@ -1,6 +1,6 @@
 //Runtime: 33 ms, faster than 42.78% of C++ online submissions for Kth Smallest Element in a BST.
 //Memory Usage: 25.4 MB, less than 16.61% of C++ online submissions for Kth Smallest Element in a BST.
-//가장 작은놈 찾고, 거기서부터 다음으로 큰놈들을 K번 반복해서 찾음.
+//가장 작은놈 찾고, 거기서부터 다음으로 큰놈들을 K번 반복해서 찾음. (O(klogn) 방법)
 //이렇게하면 flow up 커버가능할듯
 //삽입 삭제 일어나더라도 K번째 큰놈 찾아놓은 상태면 
 //K번째 큰놈보다 작은게 삽입됨 -> 현재 위치가 K+1번째 큰놈의 노드가 됨.
